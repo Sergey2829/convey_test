@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -14,7 +15,7 @@ class PlanController extends Controller
         return view('plans', compact('plans', 'currentPlan'));
     }
 
-    public function changePlan(Request $request)
+    public function changePlan(Request $request): RedirectResponse
     {
         $request->validate([
             'plan_id' => 'required|exists:plans,id'
